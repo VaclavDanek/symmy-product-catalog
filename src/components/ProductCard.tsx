@@ -1,0 +1,57 @@
+import { Card, Tag, Typography } from 'antd'
+import { TagOutlined } from '@ant-design/icons'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+
+//* types
+import type { FC, JSX } from 'react'
+import type { Product } from '../types/models/Product'
+
+//* styles
+import 'react-lazy-load-image-component/src/effects/blur.css'
+
+const { Text, Title } = Typography
+
+const ProductCard: FC<{ product: Product }> = ({ product }): JSX.Element => {
+  const discountPercentage: number = Math.round(product.discountPercentage) 
+  return (
+    <Card className="h-full hover:shadow-md transition-shadow">
+      <div className="aspect-square justify-self-center h-[200px] mb-4">
+        <LazyLoadImage
+          src={product.thumbnail}
+          alt={product.title}
+          className="w-full h-full object-contain"
+          effect="blur"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
+            target.src = 'https://placehold.co/300x300/eee/ccc?text=No+Image'
+          }}
+        />
+      </div>
+
+      <Title level={3} className="line-clamp-2 m-0">
+        {product.title}
+      </Title>
+      
+      {product.brand && (
+        <Text type="secondary" className="text-sm block mt-1">
+          <TagOutlined className="mr-1" />{product.brand}
+        </Text>
+      )}
+
+      <div className="flex items-center mt-3">
+        <Text className="text-lg font-semibold text-blue-500">
+          {product.price.toLocaleString('cs-CZ', { 
+            style: 'currency', 
+            currency: 'USD',
+            minimumFractionDigits: 0
+          })}
+        </Text>
+        {discountPercentage > 0 && (
+          <Tag color="error" className="ml-1">-{discountPercentage}%</Tag>
+        )}
+      </div>
+    </Card>
+  )
+}
+
+export default ProductCard

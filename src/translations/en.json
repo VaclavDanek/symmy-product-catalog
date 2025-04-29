@@ -1,0 +1,30 @@
+{
+  "productList": {
+    "title": "Product Catalog",
+    "pagination": {
+      "page": "Page {{current}} of {{total}}"
+    }
+  },
+  "productDetail": {
+    "title": "Product Detail",
+    "moreImages": "More Images"
+  },
+  "product": {
+    "stock": {
+      "inStock": "In Stock: {{count}} pcs",
+      "outOfStock": "Out of Stock"
+    },
+    "imageAlt": "{{title}} - image {{index}}",
+    "discount": "-{{value}}%",
+    "currencyFormat": {
+      "style": "currency",
+      "currency": "CZK",
+      "minimumFractionDigits": 0,
+      "maximumFractionDigits": 0
+    }
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "backToHome": "Back to Home"
+  }
+}

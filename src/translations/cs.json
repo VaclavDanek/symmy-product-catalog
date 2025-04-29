@@ -1,0 +1,42 @@
+{
+  "common": {
+    "loading": "Načítání...",
+    "back": "Zpět",
+    "backToCatalog": "Zpět do katalogu"
+  },
+  "errors": {
+    "invalidProduct": "Neplatný produkt",
+    "productLoadError": "Nastala chyba při načítání produktu",
+    "productsLoadError": "Nastala chyba při načítání produktů",
+    "productNotFound": "Produkt nebyl nalezen",
+    "noProducts": "V tuto chvíli nejsou k dispozici žádné produkty"
+  },
+  "productList": {
+    "title": "Produktový katalog",
+    "pagination": {
+      "page": "Strana {{current}} z {{total}}"
+    }
+  },
+  "productDetail": {
+    "title": "Detail produktu",
+    "moreImages": "Další obrázky"
+  },
+  "product": {
+    "stock": {
+      "inStock": "Skladem: {{count}} ks",
+      "outOfStock": "Není skladem"
+    },
+    "imageAlt": "{{title}} - obrázek {{index}}",
+    "discount": "-{{value}} %",
+    "currencyFormat": {
+      "style": "currency",
+      "currency": "CZK",
+      "minimumFractionDigits": 0,
+      "maximumFractionDigits": 0
+    }
+  },
+  "notFound": {
+    "title": "404 - Stránka nenalezena",
+    "backToHome": "Zpět na hlavní stránku"
+  }
+}
