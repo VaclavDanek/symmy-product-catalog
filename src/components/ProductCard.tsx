@@ -1,6 +1,7 @@
 import { Card, Tag, Typography } from 'antd'
 import { TagOutlined } from '@ant-design/icons'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { useTranslation } from 'react-i18next'
 
 //* types
 import type { FC, JSX } from 'react'
@@ -12,6 +13,8 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 const { Text, Title } = Typography
 
 const ProductCard: FC<{ product: Product }> = ({ product }): JSX.Element => {
+  const { t } = useTranslation()
+  
   const discountPercentage: number = Math.round(product.discountPercentage) 
   return (
     <Card className="h-full hover:shadow-md transition-shadow">
@@ -47,7 +50,9 @@ const ProductCard: FC<{ product: Product }> = ({ product }): JSX.Element => {
           })}
         </Text>
         {discountPercentage > 0 && (
-          <Tag color="error" className="ml-1">-{discountPercentage}%</Tag>
+          <Tag color="error" className="ml-1">
+            {t('product.discount', { value: discountPercentage })}
+          </Tag>
         )}
       </div>
     </Card>
