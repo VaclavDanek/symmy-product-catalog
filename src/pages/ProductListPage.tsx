@@ -16,14 +16,14 @@ import type { Product } from '../types/models/Product'
 
 const ProductListPage: React.FC = (): JSX.Element => {
   const { t } = useTranslation()
-  const location = useLocation()
-  const [currentPage, setCurrentPage] = useState<number>(location.state?.currentPage ?? 1)
+  const { state } = useLocation()
+  const [currentCatalogPage, setCurrentCatalogPage] = useState<number>(state?.currentCatalogPage || 1)
 
   const productsPerPage: number = 8
 
   const { data, isError, isLoading } = useQuery<{ products: Product[], total: number }, Error>({
-    queryKey: ['products', currentPage, productsPerPage],
-    queryFn: () => fetchProducts((currentPage - 1) * productsPerPage, productsPerPage),
+    queryKey: ['products', currentCatalogPage, productsPerPage],
+    queryFn: () => fetchProducts((currentCatalogPage - 1) * productsPerPage, productsPerPage),
     retry: (failureCount) => (failureCount < 3),
   })
 
@@ -54,7 +54,7 @@ const ProductListPage: React.FC = (): JSX.Element => {
   }
 
   const handlePageChange = (page: number): void => {
-    setCurrentPage(page)
+    setCurrentCatalogPage(page)
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
@@ -66,7 +66,7 @@ const ProductListPage: React.FC = (): JSX.Element => {
             key={product.id} 
             xs={24} sm={12} md={8} lg={6}
           >
-            <Link state={{ catalogPage: currentPage }} to={`/product/${product.id}` }>
+            <Link state={{ currentCatalogPage }} to={`/product/${product.id}` }>
               <ProductCard product={product} />
             </Link>
           </Col>
@@ -75,7 +75,7 @@ const ProductListPage: React.FC = (): JSX.Element => {
       <Pagination
         simple
         className="flex justify-center mt-4"
-        current={currentPage}
+        current={currentCatalogPage}
         total={data.total}
         pageSize={productsPerPage}
         onChange={handlePageChange}

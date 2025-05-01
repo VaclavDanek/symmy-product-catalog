@@ -18,6 +18,12 @@ const ProductCard: FC<{ product: Product }> = ({ product }): JSX.Element => {
   const discountPercentage: number = Math.round(product.discountPercentage) 
   return (
     <Card className="h-full hover:shadow-md transition-shadow">
+      <Text type="secondary" className="text-sm block min-h-[1lh] mt-1">
+        {product.brand && <>
+          <TagOutlined className="mr-1" />{product.brand}
+        </>}
+      </Text>
+      
       <div className="aspect-square justify-self-center h-[200px] mb-4">
         <LazyLoadImage
           src={product.thumbnail}
@@ -31,15 +37,9 @@ const ProductCard: FC<{ product: Product }> = ({ product }): JSX.Element => {
         />
       </div>
 
-      <Title level={3} className="line-clamp-2 m-0">
+      <Title level={4} className="line-clamp-2 min-h-[2lh] m-0">
         {product.title}
       </Title>
-      
-      {product.brand && (
-        <Text type="secondary" className="text-sm block mt-1">
-          <TagOutlined className="mr-1" />{product.brand}
-        </Text>
-      )}
 
       <div className="flex items-center mt-3">
         <Text className="text-lg font-semibold text-blue-500">

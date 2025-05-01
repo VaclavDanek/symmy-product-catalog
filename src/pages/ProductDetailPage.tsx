@@ -18,9 +18,9 @@ const { Title, Text } = Typography
 
 const ProductDetailPage: React.FC = (): JSX.Element => {
   const { t } = useTranslation()
-  const location = useLocation()
+  const { state } = useLocation()
 
-  const { catalogPage } = location.state as { catalogPage: number }
+  const { currentCatalogPage } = state as { currentCatalogPage: number }
   const { productId = '' } = useParams<{ productId: string }>()
   const id: number = parseInt(productId, 10)
 
@@ -81,7 +81,7 @@ const ProductDetailPage: React.FC = (): JSX.Element => {
       </Title>
       <Card className="w-fit flex flex-col md:flex-row">
         <div className="flex justify-between">
-          <Link state={{ currentPage: catalogPage }} to={`/`}>
+          <Link state={{ currentCatalogPage }} to={`/`}>
             <Button type="primary">
               <ArrowLeftOutlined />{t('common.backToCatalog')}
             </Button>
