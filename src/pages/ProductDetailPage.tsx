@@ -86,7 +86,7 @@ const ProductDetailPage: React.FC = (): JSX.Element => {
               <ArrowLeftOutlined />{t('common.backToCatalog')}
             </Button>
           </Link>
-          <Tag color="geekblue" className="place-self-center m-0">{product.category}</Tag>
+          <Tag color="geekblue" className="place-self-center self-baseline m-0">{product.category}</Tag>
         </div>
         <div className="mt-3">
           <Title level={3} className="font-bold m-0">{product.title}</Title>
